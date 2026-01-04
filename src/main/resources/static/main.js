@@ -32,10 +32,9 @@ function connect(event) {
 }
 
 function onConnected() {
-    // اشتراک در کانال عمومی
+    
     stompClient.subscribe('/topic/public', onMessageReceived);
 
-    // ارسال اسم کاربر به سرور
     stompClient.send("/app/chat.addUser",
         {},
         JSON.stringify({sender: username, type: 'JOIN'})
